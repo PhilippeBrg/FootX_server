@@ -9,11 +9,11 @@ var Team = require('./api/models/teamModel');
 var Competition = require('./api/models/competitionModel');
 var User = require('./api/models/userModel');
 
-var competitionApi = require('./footballDataApi/competition');
-var populate = require('./populate');
+// Populate our db with data
+//var populate = require('./populate');
 
 const bodyParser = require('body-parser');
-var config = require('./_config');
+var config = require('../_config');
 
 // setup morgan logs
 server.use(morgan('dev'));
@@ -33,6 +33,7 @@ mongoose.connect(config.mongoURI[server.settings.env], function (err, res) {
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
+//router
 require('./api/routes/router')(server, {});
 
 //populate.populate();

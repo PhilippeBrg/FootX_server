@@ -1,6 +1,6 @@
 // footballDataApi reference
-var competitionDataApi = require('./footballDataApi/competition');
-var teamDataApi = require('./footballDataApi/teams');
+var competitionDataApi = require('../footballDataApi/competition');
+var teamDataApi = require('../footballDataApi/teams');
 
 // models
 var Competition = require('./api/models/competitionModel');
