@@ -2,9 +2,9 @@ process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-var server = require('../server');
+var server = require('../src/server');
 var should = chai.should();
-var Competition = require('../api/models/competitionModel');
+var Competition = require('../src/api/models/competitionModel');
 var mongoose = require('mongoose');
 
 chai.use(chaiHttp);
