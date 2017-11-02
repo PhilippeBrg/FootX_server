@@ -1,0 +1,33 @@
+{
+  "name": "omapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test/test-player.js ./test/test-team.js ./test/test-competition.js ./test/test-user.js",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "author": "Philippe Borg",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "express": "^4.16.1",
+    "mocha": "^4.0.1",
+    "mongoose": "^4.12.1",
+    "morgan": "^1.9.0",
+    "promise": "^8.0.1",
+    "react": "^16.0.0",
+    "react-router": "^4.2.0",
+    "request": "^2.83.0",
+    "sinon": "^4.0.1",
+    "sinon-mongoose": "^2.0.2"
+  }
+}
