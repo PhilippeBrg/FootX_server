@@ -1,5 +1,4 @@
-
-const token = 'YOUR_TOKEN_API';
+const token = '1cbbcef3b6974dd5928288f5ae56b76d';
 const full = 'full';
 const minified = 'minified';
 const compressed = 'compressed';

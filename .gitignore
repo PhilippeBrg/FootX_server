@@ -1,5 +1,8 @@
 # dependencies
 node_modules
+#data
 data
-referentiel.log
 
+#personal files
+referentiel.log
+footballDataApi/_configApi.js
