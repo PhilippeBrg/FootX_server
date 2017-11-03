@@ -10,10 +10,10 @@ var Competition = require('./api/models/competitionModel');
 var User = require('./api/models/userModel');
 
 // Populate our db with data
-//var populate = require('./populate');
+var populate = require('./populate');
 
 const bodyParser = require('body-parser');
-var config = require('../_config');
+var config = require('./_config');
 
 // setup morgan logs
 server.use(morgan('dev'));
@@ -43,7 +43,7 @@ server.use(function (req, res) {
 });
 
 server.listen(port, () => {
-  console.log('todo list RESTful API server started on: ' + port);
+  console.log('FootX RESTful API server started on: ' + port);
 });
 
 module.exports = server;

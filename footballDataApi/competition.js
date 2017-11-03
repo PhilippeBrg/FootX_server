@@ -1,13 +1,9 @@
 'use strict';
 
 const request = require('request');
-const promise = require('promise');
-const token = '1cbbcef3b6974dd5928288f5ae56b76d';
-const full = 'full';
-const minified = 'minified';
-const compressed = 'compressed';
+const config = require('./_configApi');
 
-var routes = {
+const routes = {
   'competitionURL': 'http://api.football-data.org/v1/competitions/',
   'competitionIdURL': (idCompetition) => 'http://api.football-data.org/v1/competitions/' + idCompetition,
   'teamsCompetitionIdURL': (idCompetition) => 'http://api.football-data.org/v1/competitions/' + idCompetition + '/teams',
@@ -15,12 +11,12 @@ var routes = {
   'competitionFixtureDayURL': (idCompetition, day) => 'http://api.football-data.org/v1/competitions/' + idCompetition + '/fixtures?matchday=' + day
 };
 
-exports.getAllCompetitions = function () {
+function getAllCompetitions () {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.competitionURL
         }, function (error, response, body) {
@@ -29,14 +25,14 @@ exports.getAllCompetitions = function () {
         resolve(body);
       });
     });
-};
+}
 
-exports.getCompetition = function (idCompetition) {
+function getCompetition (idCompetition) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.competitionIdURL(idCompetition)
         }, function (error, response, body) {
@@ -47,12 +43,12 @@ exports.getCompetition = function (idCompetition) {
     });
 };
 
-exports.getAllTeamsForCompetition = function (idCompetition) {
+function getAllTeamsForCompetition (idCompetition) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.teamsCompetitionIdURL(idCompetition)
         }, function (error, response, body) {
@@ -63,12 +59,12 @@ exports.getAllTeamsForCompetition = function (idCompetition) {
   });
 };
 
-exports.getTableForCompetition = function (idCompetition) {
+function getTableForCompetition (idCompetition) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.tableCompetitionURL(idCompetition)
         }, function (error, response, body) {
@@ -79,12 +75,12 @@ exports.getTableForCompetition = function (idCompetition) {
   });
 };
 
-exports.getFixturesDayForCompetition = function (idCompetition, day) {
+function getFixturesDayForCompetition (idCompetition, day) {
   return new Promise(function (resolve, reject) {
     request({
         headers: {
-          'X-Auth-Token': token,
-          'X-Response-Control' : full
+          'X-Auth-Token': config.token,
+          'X-Response-Control' : config.full
         },
         uri: routes.competitionFixtureDayURL(idCompetition, day)
       }, function (error, response, body) {
@@ -94,3 +90,5 @@ exports.getFixturesDayForCompetition = function (idCompetition, day) {
     });
   });
 };
+
+module.exports = { getTableForCompetition, getFixturesDayForCompetition, getAllTeamsForCompetition, getCompetition, getAllCompetitions };

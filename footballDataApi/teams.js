@@ -1,40 +1,36 @@
 'use strict';
 
 const request = require('request');
-const promise = require('promise');
-const token = '1cbbcef3b6974dd5928288f5ae56b76d';
-const full = 'full';
-const minified = 'minified';
-const compressed = 'compressed';
+const config = require('./_configApi');
 
-var routes = {
+const routes = {
   'teamIdURL': (idTeam) => 'http://api.football-data.org/v1/teams/' + idTeam,
-  'playersTeamURL': (idTeam) => 'http://api.football-data.org/v1/teams/' + idTeam + '/players',
-  'fixturesForTeamURL': (idTeam) => 'http://api.football-data.org/v1/teams/' + idTeam + '/fixtures/'
-  };
+  'playersTeamURL' : (idTeam) => 'http://api.football-data.org/v1/teams/' + idTeam + '/players',
+  'fixturesForTeamURL' : (idTeam) => 'http://api.football-data.org/v1/teams/' + idTeam + '/fixtures/'
+};
 
-exports.getTeam = function (idTeam) {
+function getTeam (idTeam) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.teamIdURL(idTeam)
         }, function (error, response, body) {
         if (error)
-          reject('request g failed !');
+          reject('request getTeam failed !');
         resolve(body);
       });
     });
-};
+}
 
-exports.getPlayerForTeam = function (idTeam) {
+function getPlayerForTeam (idTeam) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.playersTeamURL(idTeam)
         }, function (error, response, body) {
@@ -43,15 +39,14 @@ exports.getPlayerForTeam = function (idTeam) {
         resolve(body);
       });
     });
-};
+}
 
-
-exports.getAllFixturesForTeam = function (idTeam) {
+function getAllFixturesForTeam (idTeam) {
   return new Promise(function (resolve, reject) {
       request({
           headers: {
-            'X-Auth-Token': token,
-            'X-Response-Control' : full
+            'X-Auth-Token': config.token,
+            'X-Response-Control' : config.full
           },
           uri: routes.fixturesForTeamURL(idTeam)
         }, function (error, response, body) {
@@ -60,4 +55,6 @@ exports.getAllFixturesForTeam = function (idTeam) {
         resolve(body);
       });
     });
-};
+}
+
+module.exports = { getAllFixturesForTeam, getPlayerForTeam, getTeam };

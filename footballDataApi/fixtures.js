@@ -1,20 +1,11 @@
 'use strict';
 
+// WORK IN PROGRESS
+
 const request = require('request');
-const promise = require('promise');
-const token = '1cbbcef3b6974dd5928288f5ae56b76d';
-const full = 'full';
-const minified = 'minified';
-const compressed = 'compressed';
+const config = require('./_configApi');
 
-const options = {
-  headers: {
-    'X-Auth-Token' : token,
-    'X-Response-Control' : full // default
-  }
-};
-
-var routes = {
+const routes = {
   'competitionURL': 'http://api.football-data.org/v1/competitions/',
   'competitionIdURL': (idCompetition) => 'http://api.football-data.org/v1/competitions/' + idCompetition,
   'teamsCompetitionIdURL': (idCompetition) => 'http://api.football-data.org/v1/competitions/' + idCompetition + '/teams',

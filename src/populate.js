@@ -15,9 +15,9 @@ var arrayidteam = [];
 
 function populate () {
   console.log('Starting populate our football db...');
-  populateCompetitions();
+  //populateCompetitions();
   //ligue 1 2017/2018
-  populateTeams(450);
+  //populateTeams(450);
   //Campeonato Brasileiro da Série A 444
 }
 
